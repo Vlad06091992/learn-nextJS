@@ -1,7 +1,32 @@
+
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import {Metadata} from "next";
+
+// export const metadata: Metadata = {
+//   title: "Исправленные данные",
+//   description: "Мой текст",
+// };
+
+export async function generateMetadata():Promise<Metadata>{
+  return {
+    title: "Вычисленные данные",
+    description: "Мой текст",
+    //иконки лучше прямо ложить в файловую структуру, но можно и так указывать к ним пути, они приоритетне
+    icons:{
+      icon:'./icon.jpeg'
+    }
+  }
+}
 
 export default function Home() {
+
+  const z = 10;
+
+  console.log(z)
+  debugger
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
