@@ -1,0 +1,17 @@
+@mixin h-properties( $dir: row, $fontWeight, $fontSize) {
+  font-weight: $fontWeight;
+  font-size: $fontSize;
+  line-height: 100%;
+}
+
+.h1 {
+  @include h-properties($fontWeight: 500, $fontSize:26px);
+}
+
+.h2 {
+  @include h-properties($fontWeight: 500, $fontSize:22px);
+}
+
+.h3 {
+  @include h-properties($fontWeight: 600, $fontSize:20px);
+}

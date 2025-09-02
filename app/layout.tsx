@@ -1,16 +1,11 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type {Metadata} from "next";
+import {Open_Sans} from "next/font/google";
+import "./globals.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const openSans = Open_Sans({
+  subsets: ["latin","cyrillic"],
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Наш проект",
@@ -25,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${openSans.className}`}>
         {children}
       </body>
     </html>
