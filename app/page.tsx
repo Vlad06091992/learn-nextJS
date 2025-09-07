@@ -3,9 +3,9 @@
 import { Htag } from "@/app/components";
 import styles from './page.module.scss'
 import { Button } from "@/app/components/Button/Button";
-import File from '../public/file.svg'
 import Image from 'next/image'
 import { Paragraph, ParagraphSizes } from "@/app/components/Paragraph/Paragraph";
+import { Tag, TagThemes } from "@/app/components/Tag/Tag";
 // export const metadata: Metadata = {
 //   title: "Исправленные данные",
 //   description: "Мой текст",
@@ -30,8 +30,14 @@ export default function Home() {
 
   return (
       <>
-          {/*если нужно интерактивно/динамично менять SVG — используйте <File/>*/}
-          <File/>
+          {/*/!*если нужно интерактивно/динамично менять SVG — используйте <File/>*!/*/}
+          {/*<File/>*/}
+         <Tag>Outlined</Tag>
+         <Tag theme={TagThemes.GREEN}>Green</Tag>
+         <Tag theme={TagThemes.GREY}>Grey</Tag>
+         <Tag theme={TagThemes.RED}>Red</Tag>
+         <Tag theme={TagThemes.PRIMARY}>Primary</Tag>
+         <Tag theme={TagThemes.PRIMARY} href={'https://www.figma.com/design/eHIyKZXUUtMf1BQiuv6tTA/%D0%9A%D1%83%D1%80%D1%81-2---NextJS?node-id=0-1&p=f&t=FR1ytiBedUh1H0fE-0'}>Primary</Tag>
           <Paragraph size={ParagraphSizes.l}>Большой</Paragraph>
           <Paragraph size={ParagraphSizes.M}>Средний</Paragraph>
           <Paragraph size={ParagraphSizes.S}>Маленький</Paragraph>
