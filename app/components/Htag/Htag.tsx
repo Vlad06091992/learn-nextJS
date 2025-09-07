@@ -1,4 +1,4 @@
-import React, {JSX, ReactNode} from "react";
+import React, { JSX, ReactNode } from "react";
 import styles from './Htag.module.scss'
 import cn from "classnames";
 
@@ -11,7 +11,7 @@ interface HtagProps {
 }
 
 export const Htag = (props:HtagProps):JSX.Element =>{
-    const {tag,children,className} = props
-    let Component = tag
+    const { tag,children,className } = props
+    const Component = tag
     return <Component className={cn(styles[tag], className ?? '')}>{children}</Component>
 }

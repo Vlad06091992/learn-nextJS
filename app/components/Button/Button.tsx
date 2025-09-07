@@ -20,7 +20,5 @@ export const Button = (props:ButtonProps):JSX.Element =>{
             <RightArrow/>
             </div>
         }
-
-
     </button>
 }
