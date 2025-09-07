@@ -1,11 +1,10 @@
-"use client"
+// "use client"
 // import styles from "./page.module.css";
-import {Metadata} from "next";
-import {Htag} from "@/app/components";
+import { Htag } from "@/app/components";
 import styles from './page.module.scss'
-import {Button} from "@/app/components/Button/Button";
-import {useState} from "react";
-
+import { Button } from "@/app/components/Button/Button";
+import File from '../public/file.svg'
+import Image from 'next/image'
 // export const metadata: Metadata = {
 //   title: "Исправленные данные",
 //   description: "Мой текст",
@@ -24,16 +23,20 @@ import {useState} from "react";
 
 export default function Home() {
 
-    const [position, setPosition] = useState('left')
+    // const [position, setPosition] = useState('left')
 
     debugger
 
   return (
       <>
+          {/*если нужно интерактивно/динамично менять SVG — используйте <File/>*/}
+          <File/>
+          {/*Если нужен просто статичный файл и важны кэш/размер бандла — используйте <Image> или обычный <img>*/}
+          <Image src={'/file.svg'} alt='svg' width={'100'} height={'60'}/>
         <Htag tag={"h2"} className={styles.hz}>Hello world</Htag>
-        <Button mode={'primary'} arrow={position as any}>Опубликовать</Button>
+        <Button mode={'primary'} arrow={'left'}>Опубликовать</Button>
         <Button mode={'outline'}>Читать отзывы</Button>
-        <Button onClick={()=>setPosition(position === 'left' ? 'down' : 'left')} mode={'outline'} arrow={position as any}>Читать отзывы</Button>
+        <Button mode={'outline'} arrow={'down'}>Читать отзывы</Button>
       </>
   );
 }
