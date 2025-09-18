@@ -24,6 +24,8 @@ const eslintConfig = [
     {
         rules: {
             "object-curly-spacing": ["error", "always"],
+            "react-hooks/rules-of-hooks": "error",
+            "react-hooks/exhaustive-deps": "warn"
         },
     }
 ];

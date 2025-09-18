@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, JSX, ReactNode, useState } from "react";
+import React, {ButtonHTMLAttributes, DetailedHTMLProps, JSX, ReactNode, useEffect, useState} from "react";
 import styles from './ButtonClientComponent.module.scss'
 import cn from "classnames";
 
@@ -16,6 +16,12 @@ interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 export const ButtonClientComponent = (props: ButtonProps): JSX.Element => {
     const { children, className, mode = 'primary', arrow = 'none', ...restProps } = props
     const [counter, setCounter] = useState(0)
+
+    // проверка работы линтера
+    if(counter > 1){
+        useEffect(()=>{},[])
+    }
+
     return <button onClick={() => {
         setCounter(counter + 1);
         console.debug('click')
