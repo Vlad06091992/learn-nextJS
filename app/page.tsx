@@ -6,6 +6,7 @@ import { Button } from "@/app/components/Button/Button";
 import Image from 'next/image'
 import { Paragraph, ParagraphSizes } from "@/app/components/Paragraph/Paragraph";
 import { Tag, TagThemes } from "@/app/components/Tag/Tag";
+import { ButtonClientComponent } from "@/app/components/ButtonClientComponent/ButtonClientComponent";
 // export const metadata: Metadata = {
 //   title: "Исправленные данные",
 //   description: "Мой текст",
@@ -45,9 +46,10 @@ export default function Home() {
           {/*Если нужен просто статичный файл и важны кэш/размер бандла — используйте <Image> или обычный <img>*/}
           <Image src={'/file.svg'} alt='svg' width={'100'} height={'60'}/>
         <Htag tag={"h2"} className={styles.hz}>Hello world</Htag>
-        <Button mode={'primary'} arrow={'left'}>Опубликовать</Button>
+        <Button  mode={'primary'} arrow={'left'}>Опубликовать</Button>
         <Button mode={'outline'}>Читать отзывы</Button>
         <Button mode={'outline'} arrow={'down'}>Читать отзывы</Button>
+          <ButtonClientComponent>Клиентская компонента</ButtonClientComponent>
       </>
   );
 }
