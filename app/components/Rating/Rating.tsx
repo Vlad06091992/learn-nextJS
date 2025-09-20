@@ -1,11 +1,9 @@
 "use client"
 
-import React, {DetailedHTMLProps, HTMLAttributes, JSX, ReactNode, useEffect} from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, JSX, ReactNode, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Rating.module.scss";
 import Star from '../../assets/Star.svg'
-
-
 
 
 interface RatingProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -14,18 +12,33 @@ interface RatingProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
     isEditable?: boolean
 }
 
-export const Rating = ({ rating,isEditable,setRating,...restProps }: RatingProps): JSX.Element => {
+export const Rating = ({ rating, isEditable = false, setRating, ...restProps }: RatingProps): JSX.Element => {
     const [ratingArray, setRatingArray] = React.useState<JSX.Element[]>(new Array(5).fill(<></>))
 
 
-    useEffect(()=>{
+    useEffect(() => {
         constructArray(rating)
-    },[rating])
-    
-    const constructArray = (currentRating:number) => {
+    }, [rating])
+
+    const changeDisplay = (value: number) => {
+        if (isEditable) constructArray(value)
+    }
+
+    const onClickHandler = (value:number) => {
+        if(isEditable) setRating?.(value + 1)
+    }
+
+    const constructArray = (currentRating: number) => {
         const updatedArray = ratingArray.map((r, i) => {
+            debugger
             return (
-                <Star key={i} className={cn(styles.star, { [styles.filled]: i < currentRating })}/>
+                <Star
+                    onClick={()=>onClickHandler(i)}
+                    onMouseEnter={() => {changeDisplay(i + 1)}}
+                    onMouseLeave={() => {
+                        changeDisplay(rating)}}
+                    key={i}
+                    className={cn(styles.star, { [styles.filled]: i < currentRating, [styles.editable]: isEditable })}/>
             )
 
         })
@@ -34,5 +47,5 @@ export const Rating = ({ rating,isEditable,setRating,...restProps }: RatingProps
 
     return <div {...restProps}>
         {ratingArray.map((r, i) => (<span key={i}>{r}</span>))}
-        </div>
+    </div>
 }

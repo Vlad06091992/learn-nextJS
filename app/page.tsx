@@ -1,12 +1,14 @@
-// "use client"
+"use client"
 // import styles from "./page.module.css";
-import {Htag, Rating} from "@/app/components";
+import { Htag, Rating } from "@/app/components";
 import styles from './page.module.scss'
 import { Button } from "@/app/components/Button/Button";
 import Image from 'next/image'
 import { Paragraph, ParagraphSizes } from "@/app/components/Paragraph/Paragraph";
 import { Tag, TagThemes } from "@/app/components/Tag/Tag";
 import { ButtonClientComponent } from "@/app/components/ButtonClientComponent/ButtonClientComponent";
+import { useState } from 'react'
+
 
 // export const metadata: Metadata = {
 //   title: "Исправленные данные",
@@ -27,6 +29,7 @@ import { ButtonClientComponent } from "@/app/components/ButtonClientComponent/Bu
 export default function Home() {
 
     // const [position, setPosition] = useState('left')
+    const [rating, setRating] = useState<any>(1)
 
     debugger
 
@@ -51,7 +54,7 @@ export default function Home() {
         <Button mode={'outline'}>Читать отзывы</Button>
         <Button mode={'outline'} arrow={'down'}>Читать отзывы</Button>
           <ButtonClientComponent>Клиентская компонента</ButtonClientComponent>
-          <Rating rating={3} />
+          <Rating isEditable={true} setRating={setRating} rating={rating} />
       </>
   );
 }
