@@ -1,7 +1,7 @@
-import type {Metadata} from "next";
-import {Open_Sans} from "next/font/google";
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
 import "./globals.scss";
-
+import styles from './page.module.scss'
 const openSans = Open_Sans({
   subsets: ["latin","cyrillic"],
 })
@@ -21,6 +21,14 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${openSans.className}`}>
+      Корневой layout проекта
+      <nav className={styles.nav}>
+          <ul>
+              <li>Курсы</li>
+              <li>Для детей</li>
+              <li>О нас</li>
+          </ul>
+      </nav>
         {children}
       </body>
     </html>

@@ -4,16 +4,16 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "описание About",
+  title: "News",
+  description: "описание News",
 };
 
 
-export default function About() {
+export default function News() {
 
     return (
         <main className={styles.about}>
-            О проекте
+            Новости
         </main>
     );
 }
