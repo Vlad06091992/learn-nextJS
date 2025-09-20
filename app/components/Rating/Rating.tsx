@@ -1,6 +1,6 @@
 "use client"
 
-import React, { DetailedHTMLProps, HTMLAttributes, JSX, ReactNode, useEffect } from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, JSX, KeyboardEvent, useEffect } from "react";
 import cn from "classnames";
 import styles from "./Rating.module.scss";
 import Star from '../../assets/Star.svg'
@@ -25,20 +25,35 @@ export const Rating = ({ rating, isEditable = false, setRating, ...restProps }: 
     }
 
     const onClickHandler = (value:number) => {
-        if(isEditable) setRating?.(value + 1)
+        if(isEditable) setRating?.(value)
     }
+
+    const spaceHandler = (e:KeyboardEvent<SVGElement>,value:number) => {
+        if(e.code !== 'Space') return
+        setRating?.(value)
+    }
+
 
     const constructArray = (currentRating: number) => {
         const updatedArray = ratingArray.map((r, i) => {
             debugger
             return (
-                <Star
-                    onClick={()=>onClickHandler(i)}
+                <span
+                    onClick={()=>onClickHandler(i +1)}
                     onMouseEnter={() => {changeDisplay(i + 1)}}
                     onMouseLeave={() => {
                         changeDisplay(rating)}}
                     key={i}
-                    className={cn(styles.star, { [styles.filled]: i < currentRating, [styles.editable]: isEditable })}/>
+                >
+                           <Star
+                               className={cn(styles.star, { [styles.filled]: i < currentRating, [styles.editable]: isEditable })}
+                               tabIndex={isEditable ? 0 : -1}
+                               onKeyDown={(e:KeyboardEvent<SVGElement>) => {
+                                   spaceHandler(e,i+1)
+                               }}
+                           />
+                </span>
+
             )
 
         })
