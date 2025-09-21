@@ -1,3 +1,5 @@
+// layout.tsx → постоянная оболочка (сохраняется между переходами).
+
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 

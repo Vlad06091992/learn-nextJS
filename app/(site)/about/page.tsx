@@ -1,4 +1,4 @@
-// "use client"
+// page.tsx → содержимое конкретного роута.
 import styles from './page.module.scss'
 import { Metadata } from "next";
 
