@@ -2,6 +2,7 @@
 // import styles from "./page.module.css";
 import styles from '../page.module.scss'
 import { Metadata } from "next";
+import {ClientComponent} from "@/app/components/ClientComponent/ClientComponent";
 
 
 // export const metadata: Metadata = {
@@ -25,6 +26,15 @@ export default function Home() {
     return (
       <main className={styles.main}>
           Главная страница
+          app name: {process.env.APP_NAME}
+          <br/>
+          my secret: {process.env.SECRET}
+          <br/>
+          public client: {process.env.NEXT_PUBLIC_CLIENT}
+          <br/>
+          client: {process.env.CLIENT}
+          -----------------------------------
+          <ClientComponent/>
       </main>
   );
 }
